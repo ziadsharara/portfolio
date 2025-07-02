@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Page not found - Ziad Sharara - Software Engineer"
+    />
+    <meta name="robots" content="noindex, follow" />
+    <!-- <link rel="canonical" href=""> -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="./public/icons/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./public/icons/favicon.png" />
+
+    <!-- Critical CSS for page loader - inline to prevent FOUC -->
+    <style>
+      /* Hide all content initially */
+      html.loading {
+        overflow: hidden;
+        height: 100%;
+      }
+
+      /* Page loader styling */
+      #page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #080808;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.3s ease;
+      }
+
+      html.light #page-loader {
+        background-color: #ffffff;
+      }
+
+      #page-loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Spinner animation */
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        border-top-color: #ffffff;
+        animation: spin 1s ease infinite;
+      }
+
+      html.light .spinner {
+        border: 3px solid rgba(0, 0, 0, 0.1);
+        border-top-color: #080808;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Main content visibility control */
+      #content-wrapper {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      #content-wrapper.visible {
+        opacity: 1;
+      }
+
+      /* Enhanced 404 page styling */
+      .error-code {
+        font-size: 9rem;
+        font-weight: 700;
+        line-height: 1;
+        background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+      }
+
+      .error-container {
+        animation: fadeIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        backdrop-filter: blur(8px);
+        padding: 3rem;
+        border-radius: 16px;
+      }
+
+      body.light .error-container {
+        background-color: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      body.dark .error-container {
+        background-color: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      .home-button {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .home-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: all 0.6s ease;
+      }
+
+      .home-button:hover::before {
+        left: 100%;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Background pattern for 404 page */
+      body::before {
+        opacity: 0.3;
+      }
+
+      /* Theme toggle */
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 100;
+        transition: all 0.3s ease;
+      }
+
+      body.light .theme-toggle {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      body.dark .theme-toggle {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      .theme-toggle:hover {
+        transform: rotate(15deg);
+      }
+    </style>
+
+    <!-- Prevent FOUC with instant execution script -->
+    <script>
+      // Add loading class immediately to prevent FOUC
+      document.documentElement.classList.add("loading");
+
+      // Set theme early based on localStorage
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        document.documentElement.classList.add(savedTheme);
+      } else if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: light)").matches
+      ) {
+        document.documentElement.classList.add("light");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+
+    <title>Page Not Found | Ziad Sharara - Software Engineer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css?v=1.6" />
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const savedTheme = localStorage.getItem("theme");
+
+        // Apply saved theme
+        if (savedTheme) {
+          document.body.classList.remove("dark", "light");
+          document.body.classList.add(savedTheme);
+        } else if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: light)").matches
+        ) {
+          document.body.classList.remove("dark");
+          document.body.classList.add("light");
+        }
+
+        // Toggle theme
+        themeToggle.addEventListener("click", function () {
+          const body = document.body;
+          body.classList.toggle("dark");
+          body.classList.toggle("light");
+
+          const newTheme = body.classList.contains("dark") ? "dark" : "light";
+          localStorage.setItem("theme", newTheme);
+        });
+      });
+    </script>
+
+    <style>
+      /* Ensure tooltips are visible */
+      [data-tooltip]::after {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      [data-tooltip]:hover::after {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      /* Critical tooltip styles to ensure they always work */
+      .tooltip-container {
+        position: relative !important;
+      }
+
+      .tooltip-container::after {
+        content: attr(data-tooltip) !important;
+        position: absolute !important;
+        bottom: 135% !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(10px) !important;
+        background-color: rgba(50, 50, 50, 0.95) !important;
+        color: white !important;
+        padding: 5px 9px !important;
+        border-radius: 6px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+        z-index: 1000 !important;
+      }
+
+      .tooltip-container:hover::after {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateX(-50%) translateY(0) !important;
+      }
+
+      /* Project tooltip specific styles */
+      .project-icon.tooltip-container::after {
+        bottom: 135% !important;
+        min-width: max-content !important;
+        max-width: 150px !important;
+      }
+
+      /* Project icon direct tooltip styling */
+      .project-icon {
+        position: relative !important;
+      }
+
+      .icon-tooltip {
+        position: absolute !important;
+        bottom: 135% !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(10px) !important;
+        background-color: rgba(50, 50, 50, 0.95) !important;
+        color: white !important;
+        padding: 5px 9px !important;
+        border-radius: 6px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        z-index: 2000 !important;
+        pointer-events: none !important;
+        transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease !important;
+      }
+
+      .project-icon:hover .icon-tooltip {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateX(-50%) translateY(0) !important;
+      }
+
+      /* Specific styles for project icon tooltips */
+      .project-github-icon .icon-tooltip,
+      .project-demo-icon .icon-tooltip,
+      .project-freelance-icon .icon-tooltip {
+        position: absolute !important;
+        bottom: 135% !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(10px) !important;
+        background-color: rgba(50, 50, 50, 0.95) !important;
+        color: white !important;
+        padding: 5px 9px !important;
+        border-radius: 6px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        z-index: 2000 !important;
+        line-height: 1.4 !important;
+      }
+
+      .project-github-icon:hover .icon-tooltip,
+      .project-demo-icon:hover .icon-tooltip,
+      .project-freelance-icon:hover .icon-tooltip {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateX(-50%) translateY(0) !important;
+      }
+
+      .project-github-icon::before,
+      .project-github-icon::after,
+      .project-demo-icon::before,
+      .project-demo-icon::after,
+      .project-freelance-icon::before,
+      .project-freelance-icon::after {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body class="dark bg-black text-white font-inter">
+    <!-- Page loader -->
+    <div id="page-loader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Content wrapper -->
+    <div id="content-wrapper">
+      <!-- Theme toggle button -->
+      <div id="theme-toggle" class="theme-toggle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="sun-icon hidden"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="moon-icon"
+        >
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </div>
+
+      <main
+        class="min-h-screen flex flex-col items-center justify-center px-4 py-12 max-w-3xl mx-auto text-center"
+      >
+        <div class="error-container space-y-6">
+          <h1 class="error-code">404</h1>
+          <h2 class="text-xl sm:text-2xl font-medium">Page Not Found</h2>
+          <p class="text-sm md:text-base max-w-md mx-auto text-gray-300">
+            The page you're looking for doesn't exist or has been moved to
+            another URL.
+          </p>
+          <div class="mt-8">
+            <a
+              href="/"
+              class="home-button inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white bg-opacity-10 hover:bg-opacity-15 transition-all"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m12 19-7-7 7-7"></path>
+                <path d="M19 12H5"></path>
+              </svg>
+              Back to Home
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Inline script for loader -->
+    <script>
+      // Function to handle page loading
+      function handlePageLoad() {
+        const loader = document.getElementById("page-loader");
+        const contentWrapper = document.getElementById("content-wrapper");
+
+        // Remove loading class from html
+        document.documentElement.classList.remove("loading");
+
+        // Hide loader and show content
+        if (loader && contentWrapper) {
+          // Add a slight delay to ensure all styles are applied
+          setTimeout(() => {
+            loader.classList.add("hidden");
+            contentWrapper.classList.add("visible");
+
+            // Remove loader from DOM after transition completes
+            setTimeout(() => {
+              if (loader.parentNode) {
+                loader.parentNode.removeChild(loader);
+              }
+            }, 350); // Slightly longer than transition duration
+          }, 100);
+        }
+      }
+
+      // Use multiple triggers to ensure the loader is removed
+      if (document.readyState === "complete") {
+        handlePageLoad();
+      } else {
+        window.addEventListener("load", handlePageLoad);
+        // Fallback timeout to ensure page displays even if load event doesn't fire properly
+        setTimeout(handlePageLoad, 2500);
+      }
+    </script>
+
+    <!-- Tooltip fix script for project icons -->
+    <script>
+      // This script runs after everything else has loaded
+      window.addEventListener("load", function () {
+        // Give time for the main scripts to run
+        setTimeout(function () {
+          console.log("Running tooltip fix script");
+
+          // Force tooltips on project icons
+          document
+            .querySelectorAll(
+              ".project-github-icon, .project-demo-icon, .project-freelance-icon"
+            )
+            .forEach(function (icon) {
+              // Get the tooltip
+              const tooltip = icon.querySelector(".icon-tooltip");
+              if (tooltip) {
+                // Apply direct inline styles
+                tooltip.style.cssText = `
+              position: absolute !important;
+              bottom: 135% !important;
+              left: 50% !important;
+              transform: translateX(-50%) translateY(10px) !important;
+              background-color: ${
+                document.body.classList.contains("dark")
+                  ? "rgba(60, 60, 60, 0.95)"
+                  : "rgba(50, 50, 50, 0.95)"
+              } !important;
+              color: white !important;
+              padding: 5px 9px !important;
+              border-radius: 6px !important;
+              font-size: 11px !important;
+              white-space: nowrap !important;
+              opacity: 0 !important;
+              visibility: hidden !important;
+              z-index: 9999 !important;
+              pointer-events: none !important;
+              line-height: 1.4 !important;
+              border: 1px solid ${
+                document.body.classList.contains("dark")
+                  ? "rgba(255, 255, 255, 0.25)"
+                  : "rgba(255, 255, 255, 0.15)"
+              } !important;
+            `;
+
+                // Make sure positioning is set correctly
+                icon.style.position = "relative";
+                icon.style.zIndex = "10";
+
+                // Add direct event listeners
+                icon.onmouseenter = function () {
+                  tooltip.style.opacity = "1";
+                  tooltip.style.visibility = "visible";
+                  tooltip.style.transform = "translateX(-50%) translateY(0)";
+                  this.style.zIndex = "9999";
+                };
+
+                icon.onmouseleave = function () {
+                  tooltip.style.opacity = "0";
+                  tooltip.style.visibility = "hidden";
+                  tooltip.style.transform = "translateX(-50%) translateY(10px)";
+                  this.style.zIndex = "10";
+                };
+              }
+            });
+        }, 2000); // 2 second delay
+      });
+    </script>
+  </body>
+</html>
