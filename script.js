@@ -11,21 +11,21 @@ const projects = [
   <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
 </svg>
 `,
-    title: "Happy Shop",
+    title: 'Happy Shop',
     description:
-      "Modular e-commerce backend, developed 30+ RESTful APIs with full CRUD, auth (JWT + RBAC), and Stripe payments with image upload, cart, wishlist, coupons, reviews, and order management.",
+      'Modular e-commerce backend, developed 30+ RESTful APIs with full CRUD, auth (JWT + RBAC), and Paymob payments with image upload, cart, wishlist, coupons, reviews, and order management.',
     technologies: [
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "RESTful API",
-      "JWT",
-      "Stripe",
-      "Railway",
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'RESTful API',
+      'JWT',
+      'Paymob',
+      'Railway',
     ],
     details:
-      "A scalable and production-ready e-commerce backend built with clean architecture and modular structure. Supports user authentication with JWT and RBAC, full product management with advanced filtering, image uploads with Sharp, Stripe payments, coupon system, wishlist, reviews, and a secure order lifecycle. Designed with best practices including centralized error handling, data sanitization, and robust API structure.",
-    github: "https://github.com/ziadsharara/e-commerce",
+      'A scalable and production-ready e-commerce backend built with clean architecture and modular structure. Supports user authentication with JWT and RBAC, full product management with advanced filtering, image uploads with Sharp, Paymob payments, coupon system, wishlist, reviews, and a secure order lifecycle. Designed with best practices including centralized error handling, data sanitization, and robust API structure.',
+    github: 'https://github.com/ziadsharara/e-commerce',
   },
   {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
@@ -36,17 +36,17 @@ const projects = [
   <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
 </svg>
 `,
-    title: "Ibtesama",
+    title: 'Ibtesama',
     description:
-      "Developed the backend for a full-stack, digital platform built to streamline dental clinic operations, with a focus on modular, scalable backend services supporting appointments, patients, user roles, and clinical workflows.",
-    technologies: ["Node.js", "Express.js", "MongoDB", "RESTful API", "JWT"],
+      'Developed the backend for a full-stack, digital platform built to streamline dental clinic operations, with a focus on modular, scalable backend services supporting appointments, patients, user roles, and clinical workflows.',
+    technologies: ['Node.js', 'Express.js', 'MongoDB', 'RESTful API', 'JWT'],
     details:
-      "Robust and modular backend tailored for dental clinic management. Features include role-based access control (admin, doctor, assistant, patient), patient record management, appointment scheduling, and secure authentication. Built with scalable architecture to support future integration with frontend systems and real-time features. Emphasizes clean code, separation of concerns, and secure route protection using JWT.",
-    github: "https://github.com/ziadsharara/ibtesama-backend",
+      'Robust and modular backend tailored for dental clinic management. Features include role-based access control (admin, doctor, assistant, patient), patient record management, appointment scheduling, and secure authentication. Built with scalable architecture to support future integration with frontend systems and real-time features. Emphasizes clean code, separation of concerns, and secure route protection using JWT.',
+    github: 'https://github.com/ziadsharara/ibtesama-backend',
   },
 ];
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   // Configuration constants
   const CONFIG = {
     typing: {
@@ -66,26 +66,26 @@ document.addEventListener("DOMContentLoaded", function () {
   // DOM element references
   const DOM = {
     theme: {
-      toggle: document.getElementById("theme-toggle"),
-      sunIcon: document.querySelector(".sun-icon"),
-      moonIcon: document.querySelector(".moon-icon"),
-      header: document.querySelector("header div:first-child"),
+      toggle: document.getElementById('theme-toggle'),
+      sunIcon: document.querySelector('.sun-icon'),
+      moonIcon: document.querySelector('.moon-icon'),
+      header: document.querySelector('header div:first-child'),
     },
     typing: {
-      textElement: document.querySelector(".typing-text"),
-      cursor: document.querySelector(".typing-cursor"),
+      textElement: document.querySelector('.typing-text'),
+      cursor: document.querySelector('.typing-cursor'),
     },
     projects: {
-      container: document.getElementById("projects-container"),
+      container: document.getElementById('projects-container'),
     },
     animation: {
-      fadeElements: document.querySelectorAll(".fade-in"),
+      fadeElements: document.querySelectorAll('.fade-in'),
     },
   };
 
   // Debugging
-  console.log("DOM loaded");
-  console.log("projects container:", DOM.projects.container);
+  console.log('DOM loaded');
+  console.log('projects container:', DOM.projects.container);
 
   // Initialize theme functionality
   initializeThemeToggle();
@@ -97,13 +97,13 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeFadeAnimations();
 
   // Initialize projects section
-  console.log("Rendering projects...");
+  console.log('Rendering projects...');
   renderProjects();
 
   // Make sure projects section is fully visible
-  if (document.querySelector("#projects-container")) {
-    document.querySelector("#projects-container").style.display = "block";
-    document.querySelector("#projects-container").style.opacity = "1";
+  if (document.querySelector('#projects-container')) {
+    document.querySelector('#projects-container').style.display = 'block';
+    document.querySelector('#projects-container').style.opacity = '1';
   }
 
   // Setup scroll reveal for project items
@@ -124,83 +124,83 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function initializeThemeToggle() {
     // Check for saved theme preference or use user's system preference
-    const savedTheme = localStorage.getItem("theme");
+    const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-      document.body.classList.remove("dark", "light");
+      document.body.classList.remove('dark', 'light');
       document.body.classList.add(savedTheme);
-      if (savedTheme === "light") {
+      if (savedTheme === 'light') {
         applyLightTheme();
       }
     } else if (
       window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: light)").matches
+      window.matchMedia('(prefers-color-scheme: light)').matches
     ) {
-      document.body.classList.remove("dark");
-      document.body.classList.add("light");
+      document.body.classList.remove('dark');
+      document.body.classList.add('light');
       applyLightTheme();
     }
 
-    DOM.theme.toggle.addEventListener("click", function () {
+    DOM.theme.toggle.addEventListener('click', function () {
       const body = document.body;
-      body.classList.toggle("dark");
-      body.classList.toggle("light");
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
 
-      if (body.classList.contains("dark")) {
+      if (body.classList.contains('dark')) {
         applyDarkTheme();
-        localStorage.setItem("theme", "dark");
+        localStorage.setItem('theme', 'dark');
       } else {
         applyLightTheme();
-        localStorage.setItem("theme", "light");
+        localStorage.setItem('theme', 'light');
       }
 
       // Update tooltip styles when theme changes
       setTimeout(() => {
         // Update normal tooltips
-        const inlineTooltips = document.querySelectorAll(".inline-tooltip");
-        const iconTooltips = document.querySelectorAll(".icon-tooltip");
+        const inlineTooltips = document.querySelectorAll('.inline-tooltip');
+        const iconTooltips = document.querySelectorAll('.icon-tooltip');
 
-        if (body.classList.contains("dark")) {
+        if (body.classList.contains('dark')) {
           inlineTooltips.forEach((tooltip) => {
-            tooltip.style.backgroundColor = "rgba(60, 60, 60, 0.95)";
-            tooltip.style.border = "1px solid rgba(255, 255, 255, 0.25)";
+            tooltip.style.backgroundColor = 'rgba(60, 60, 60, 0.95)';
+            tooltip.style.border = '1px solid rgba(255, 255, 255, 0.25)';
           });
 
           iconTooltips.forEach((tooltip) => {
-            tooltip.style.backgroundColor = "rgba(60, 60, 60, 0.95)";
-            tooltip.style.border = "1px solid rgba(255, 255, 255, 0.25)";
+            tooltip.style.backgroundColor = 'rgba(60, 60, 60, 0.95)';
+            tooltip.style.border = '1px solid rgba(255, 255, 255, 0.25)';
           });
         } else {
           inlineTooltips.forEach((tooltip) => {
-            tooltip.style.backgroundColor = "rgba(50, 50, 50, 0.95)";
-            tooltip.style.border = "1px solid rgba(255, 255, 255, 0.15)";
+            tooltip.style.backgroundColor = 'rgba(50, 50, 50, 0.95)';
+            tooltip.style.border = '1px solid rgba(255, 255, 255, 0.15)';
           });
 
           iconTooltips.forEach((tooltip) => {
-            tooltip.style.backgroundColor = "rgba(50, 50, 50, 0.95)";
-            tooltip.style.border = "1px solid rgba(255, 255, 255, 0.15)";
+            tooltip.style.backgroundColor = 'rgba(50, 50, 50, 0.95)';
+            tooltip.style.border = '1px solid rgba(255, 255, 255, 0.15)';
           });
         }
 
         // Direct project icon tooltip update
         document
           .querySelectorAll(
-            ".project-github-icon, .project-demo-icon, .project-freelance-icon"
+            '.project-github-icon, .project-demo-icon, .project-freelance-icon'
           )
           .forEach((icon) => {
-            const tooltip = icon.querySelector(".icon-tooltip");
+            const tooltip = icon.querySelector('.icon-tooltip');
             if (tooltip) {
-              if (body.classList.contains("dark")) {
-                tooltip.style.backgroundColor = "rgba(60, 60, 60, 0.95)";
-                tooltip.style.border = "1px solid rgba(255, 255, 255, 0.25)";
+              if (body.classList.contains('dark')) {
+                tooltip.style.backgroundColor = 'rgba(60, 60, 60, 0.95)';
+                tooltip.style.border = '1px solid rgba(255, 255, 255, 0.25)';
               } else {
-                tooltip.style.backgroundColor = "rgba(50, 50, 50, 0.95)";
-                tooltip.style.border = "1px solid rgba(255, 255, 255, 0.15)";
+                tooltip.style.backgroundColor = 'rgba(50, 50, 50, 0.95)';
+                tooltip.style.border = '1px solid rgba(255, 255, 255, 0.15)';
               }
 
               // Force repaint
-              tooltip.style.opacity = "0.01";
+              tooltip.style.opacity = '0.01';
               setTimeout(() => {
-                tooltip.style.opacity = "0";
+                tooltip.style.opacity = '0';
               }, 10);
             }
           });
@@ -213,38 +213,38 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function applyDarkTheme() {
     // Toggle icon visibility
-    DOM.theme.sunIcon.classList.remove("hidden");
-    DOM.theme.moonIcon.classList.add("hidden");
+    DOM.theme.sunIcon.classList.remove('hidden');
+    DOM.theme.moonIcon.classList.add('hidden');
 
     // Update header styling
-    DOM.theme.header.classList.remove("bg-black", "bg-opacity-5");
-    DOM.theme.header.classList.add("bg-white", "bg-opacity-10");
+    DOM.theme.header.classList.remove('bg-black', 'bg-opacity-5');
+    DOM.theme.header.classList.add('bg-white', 'bg-opacity-10');
 
     // Update project icon backgrounds
-    document.querySelectorAll(".project-icon-bg").forEach((el) => {
+    document.querySelectorAll('.project-icon-bg').forEach((el) => {
       el.classList.remove(
-        "bg-gray-800",
-        "bg-opacity-20",
-        "shadow-[0_0_10px_rgba(0,0,0,0.3)]"
+        'bg-gray-800',
+        'bg-opacity-20',
+        'shadow-[0_0_10px_rgba(0,0,0,0.3)]'
       );
       el.classList.add(
-        "bg-white",
-        "bg-opacity-10",
-        "shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+        'bg-white',
+        'bg-opacity-10',
+        'shadow-[0_0_10px_rgba(255,255,255,0.5)]'
       );
     });
 
     // Update button hover states
     document
-      .querySelectorAll("a.rounded-full, button.rounded-full")
+      .querySelectorAll('a.rounded-full, button.rounded-full')
       .forEach((el) => {
-        el.classList.remove("hover:bg-black", "hover:bg-opacity-5");
-        el.classList.add("hover:bg-white", "hover:bg-opacity-10");
+        el.classList.remove('hover:bg-black', 'hover:bg-opacity-5');
+        el.classList.add('hover:bg-white', 'hover:bg-opacity-10');
       });
 
     // Update body colors
-    document.body.classList.remove("bg-white", "text-gray-800");
-    document.body.classList.add("bg-black", "text-white");
+    document.body.classList.remove('bg-white', 'text-gray-800');
+    document.body.classList.add('bg-black', 'text-white');
   }
 
   /**
@@ -252,38 +252,38 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function applyLightTheme() {
     // Toggle icon visibility
-    DOM.theme.sunIcon.classList.add("hidden");
-    DOM.theme.moonIcon.classList.remove("hidden");
+    DOM.theme.sunIcon.classList.add('hidden');
+    DOM.theme.moonIcon.classList.remove('hidden');
 
     // Update header styling
-    DOM.theme.header.classList.remove("bg-white", "bg-opacity-10");
-    DOM.theme.header.classList.add("bg-black", "bg-opacity-5");
+    DOM.theme.header.classList.remove('bg-white', 'bg-opacity-10');
+    DOM.theme.header.classList.add('bg-black', 'bg-opacity-5');
 
     // Update project icon backgrounds
-    document.querySelectorAll(".project-icon-bg").forEach((el) => {
+    document.querySelectorAll('.project-icon-bg').forEach((el) => {
       el.classList.remove(
-        "bg-white",
-        "bg-opacity-10",
-        "shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+        'bg-white',
+        'bg-opacity-10',
+        'shadow-[0_0_10px_rgba(255,255,255,0.5)]'
       );
       el.classList.add(
-        "bg-gray-800",
-        "bg-opacity-20",
-        "shadow-[0_0_10px_rgba(0,0,0,0.3)]"
+        'bg-gray-800',
+        'bg-opacity-20',
+        'shadow-[0_0_10px_rgba(0,0,0,0.3)]'
       );
     });
 
     // Update button hover states
     document
-      .querySelectorAll("a.rounded-full, button.rounded-full")
+      .querySelectorAll('a.rounded-full, button.rounded-full')
       .forEach((el) => {
-        el.classList.remove("hover:bg-white", "hover:bg-opacity-10");
-        el.classList.add("hover:bg-black", "hover:bg-opacity-5");
+        el.classList.remove('hover:bg-white', 'hover:bg-opacity-10');
+        el.classList.add('hover:bg-black', 'hover:bg-opacity-5');
       });
 
     // Update body colors
-    document.body.classList.remove("bg-black", "text-white");
-    document.body.classList.add("bg-white", "text-gray-800");
+    document.body.classList.remove('bg-black', 'text-white');
+    document.body.classList.add('bg-white', 'text-gray-800');
   }
 
   /**
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fadeIn");
+            entry.target.classList.add('animate-fadeIn');
           }
         });
       },
@@ -346,17 +346,17 @@ document.addEventListener("DOMContentLoaded", function () {
    * Render projects to the DOM
    */
   function renderProjects() {
-    console.log("Starting to render projects");
-    console.log("Projects array exists:", typeof projects !== "undefined");
-    console.log("Projects array length:", projects ? projects.length : 0);
+    console.log('Starting to render projects');
+    console.log('Projects array exists:', typeof projects !== 'undefined');
+    console.log('Projects array length:', projects ? projects.length : 0);
 
     const fragment = document.createDocumentFragment(); // Use fragment for better performance
-    console.log("Projects data:", projects);
+    console.log('Projects data:', projects);
 
     projects.forEach((project, index) => {
-      console.log("Processing project:", index, project.title);
-      const projectElement = document.createElement("div");
-      projectElement.className = "space-y-3 project-item";
+      console.log('Processing project:', index, project.title);
+      const projectElement = document.createElement('div');
+      projectElement.className = 'space-y-3 project-item';
       projectElement.dataset.index = index;
 
       // Calculate visible and hidden skills counts
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const hiddenSkillsCount =
         project.technologies.length - visibleSkillsCount;
       const showMoreText =
-        hiddenSkillsCount > 0 ? `+${hiddenSkillsCount} more` : "";
+        hiddenSkillsCount > 0 ? `+${hiddenSkillsCount} more` : '';
 
       console.log(
         `Project ${project.title}: Creating HTML with ${visibleSkillsCount} visible skills and ${hiddenSkillsCount} hidden skills`
@@ -375,52 +375,52 @@ document.addEventListener("DOMContentLoaded", function () {
         showMoreText
       );
       fragment.appendChild(projectElement);
-      console.log("Created project element for:", project.title);
+      console.log('Created project element for:', project.title);
     });
 
     if (DOM.projects.container) {
-      DOM.projects.container.innerHTML = ""; // Clear any existing content first
+      DOM.projects.container.innerHTML = ''; // Clear any existing content first
       DOM.projects.container.appendChild(fragment);
       console.log(
-        "Projects appended to container:",
+        'Projects appended to container:',
         DOM.projects.container.children.length,
-        "projects added"
+        'projects added'
       );
 
       // Apply tooltip hover handlers immediately after DOM insertion
-      console.log("Applying tooltip hover handlers");
+      console.log('Applying tooltip hover handlers');
       document
         .querySelectorAll(
-          ".project-github-icon, .project-demo-icon, .project-freelance-icon"
+          '.project-github-icon, .project-demo-icon, .project-freelance-icon'
         )
         .forEach((icon) => {
-          const tooltip = icon.querySelector(".icon-tooltip");
+          const tooltip = icon.querySelector('.icon-tooltip');
           if (tooltip) {
             // Add hover event handlers
-            icon.addEventListener("mouseenter", function () {
-              tooltip.style.opacity = "1";
-              tooltip.style.visibility = "visible";
-              tooltip.style.transform = "translateX(-50%) translateY(0)";
+            icon.addEventListener('mouseenter', function () {
+              tooltip.style.opacity = '1';
+              tooltip.style.visibility = 'visible';
+              tooltip.style.transform = 'translateX(-50%) translateY(0)';
             });
 
-            icon.addEventListener("mouseleave", function () {
-              tooltip.style.opacity = "0";
-              tooltip.style.visibility = "hidden";
-              tooltip.style.transform = "translateX(-50%) translateY(10px)";
+            icon.addEventListener('mouseleave', function () {
+              tooltip.style.opacity = '0';
+              tooltip.style.visibility = 'hidden';
+              tooltip.style.transform = 'translateX(-50%) translateY(10px)';
             });
 
             // Apply correct theme
-            if (document.body.classList.contains("dark")) {
-              tooltip.style.backgroundColor = "rgba(60, 60, 60, 0.95)";
-              tooltip.style.border = "1px solid rgba(255, 255, 255, 0.25)";
+            if (document.body.classList.contains('dark')) {
+              tooltip.style.backgroundColor = 'rgba(60, 60, 60, 0.95)';
+              tooltip.style.border = '1px solid rgba(255, 255, 255, 0.25)';
             } else {
-              tooltip.style.backgroundColor = "rgba(50, 50, 50, 0.95)";
-              tooltip.style.border = "1px solid rgba(255, 255, 255, 0.15)";
+              tooltip.style.backgroundColor = 'rgba(50, 50, 50, 0.95)';
+              tooltip.style.border = '1px solid rgba(255, 255, 255, 0.15)';
             }
           }
         });
     } else {
-      console.error("Projects container not found!");
+      console.error('Projects container not found!');
     }
 
     // Initialize event listeners after rendering
@@ -451,7 +451,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="icon-tooltip" style="position:absolute;bottom:135%;left:50%;transform:translateX(-50%) translateY(10px);background-color:rgba(50,50,50,0.95);color:white;padding:5px 9px;border-radius:6px;font-size:11px;white-space:nowrap;opacity:0;visibility:hidden;z-index:9999;pointer-events:none;transition:all 0.2s ease;text-align:center;border:1px solid rgba(255,255,255,0.15);">View Source Code</div>
             </a>
           `
-              : ""
+              : ''
           }
           ${
             project.demo
@@ -461,7 +461,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="icon-tooltip" style="position:absolute;bottom:135%;left:50%;transform:translateX(-50%) translateY(10px);background-color:rgba(50,50,50,0.95);color:white;padding:5px 9px;border-radius:6px;font-size:11px;white-space:nowrap;opacity:0;visibility:hidden;z-index:9999;pointer-events:none;transition:all 0.2s ease;text-align:center;border:1px solid rgba(255,255,255,0.15);">View Live Demo</div>
             </a>
           `
-              : ""
+              : ''
           }
           ${
             project.freelance
@@ -471,7 +471,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="icon-tooltip" style="position:absolute;bottom:135%;left:50%;transform:translateX(-50%) translateY(10px);background-color:rgba(50,50,50,0.95);color:white;padding:5px 9px;border-radius:6px;font-size:11px;white-space:nowrap;opacity:0;visibility:hidden;z-index:9999;pointer-events:none;transition:all 0.2s ease;text-align:center;border:1px solid rgba(255,255,255,0.15);">Freelance Project</div>
             </span>
           `
-              : ""
+              : ''
           }
         </div>
       `;
@@ -501,7 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
               </span>
             `
               )
-              .join("")}
+              .join('')}
             ${
               showMoreText
                 ? `
@@ -509,7 +509,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ${showMoreText}
               </button>
             `
-                : ""
+                : ''
             }
           </div>
           <div class="hidden-skills flex flex-wrap gap-1.5 sm:gap-2 mt-1.5 sm:mt-2 hidden">
@@ -522,7 +522,7 @@ document.addEventListener("DOMContentLoaded", function () {
               </span>
             `
               )
-              .join("")}
+              .join('')}
           </div>
         </div>
       `;
@@ -539,79 +539,79 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeProjectDetailToggle();
 
     // Add hover behavior for inline tooltips (this is more performant than using ::after pseudo-elements)
-    document.querySelectorAll(".project-icon").forEach((icon) => {
-      const inlineTooltip = icon.querySelector(".inline-tooltip");
+    document.querySelectorAll('.project-icon').forEach((icon) => {
+      const inlineTooltip = icon.querySelector('.inline-tooltip');
 
       if (inlineTooltip) {
         // Set initial positioning
-        icon.style.position = "relative";
+        icon.style.position = 'relative';
 
         // Show tooltip on hover
-        icon.addEventListener("mouseenter", function () {
-          inlineTooltip.style.opacity = "1";
-          inlineTooltip.style.visibility = "visible";
-          inlineTooltip.style.transform = "translateX(-50%) translateY(0)";
+        icon.addEventListener('mouseenter', function () {
+          inlineTooltip.style.opacity = '1';
+          inlineTooltip.style.visibility = 'visible';
+          inlineTooltip.style.transform = 'translateX(-50%) translateY(0)';
         });
 
         // Hide tooltip when not hovering
-        icon.addEventListener("mouseleave", function () {
-          inlineTooltip.style.opacity = "0";
-          inlineTooltip.style.visibility = "hidden";
-          inlineTooltip.style.transform = "translateX(-50%) translateY(10px)";
+        icon.addEventListener('mouseleave', function () {
+          inlineTooltip.style.opacity = '0';
+          inlineTooltip.style.visibility = 'hidden';
+          inlineTooltip.style.transform = 'translateX(-50%) translateY(10px)';
         });
       }
 
       // Handle direct icon tooltips
-      const iconTooltip = icon.querySelector(".icon-tooltip");
+      const iconTooltip = icon.querySelector('.icon-tooltip');
       if (iconTooltip) {
         // Ensure positioning is correct
-        icon.style.position = "relative";
+        icon.style.position = 'relative';
 
         // Handle hover behavior
-        icon.addEventListener("mouseenter", function () {
-          iconTooltip.style.opacity = "1";
-          iconTooltip.style.visibility = "visible";
-          iconTooltip.style.transform = "translateX(-50%) translateY(0)";
+        icon.addEventListener('mouseenter', function () {
+          iconTooltip.style.opacity = '1';
+          iconTooltip.style.visibility = 'visible';
+          iconTooltip.style.transform = 'translateX(-50%) translateY(0)';
         });
 
-        icon.addEventListener("mouseleave", function () {
-          iconTooltip.style.opacity = "0";
-          iconTooltip.style.visibility = "hidden";
-          iconTooltip.style.transform = "translateX(-50%) translateY(10px)";
+        icon.addEventListener('mouseleave', function () {
+          iconTooltip.style.opacity = '0';
+          iconTooltip.style.visibility = 'hidden';
+          iconTooltip.style.transform = 'translateX(-50%) translateY(10px)';
         });
       }
 
       // Fall back to CSS-based tooltips for elements without inline tooltips
       else if (
-        icon.getAttribute("data-tooltip") &&
-        !icon.classList.contains("tooltip-container")
+        icon.getAttribute('data-tooltip') &&
+        !icon.classList.contains('tooltip-container')
       ) {
-        icon.classList.add("tooltip-container");
+        icon.classList.add('tooltip-container');
       }
 
       // Ensure position is set for tooltip positioning
-      icon.style.position = "relative";
+      icon.style.position = 'relative';
 
       // Add hover effect
-      icon.addEventListener("mouseenter", function () {
-        this.style.position = "relative";
-        this.style.zIndex = "1001";
+      icon.addEventListener('mouseenter', function () {
+        this.style.position = 'relative';
+        this.style.zIndex = '1001';
 
         // Force recalculation
-        const tooltip = this.getAttribute("data-tooltip");
+        const tooltip = this.getAttribute('data-tooltip');
         if (tooltip) {
           this.style.setProperty(
-            "--tooltip-text",
+            '--tooltip-text',
             '"' + tooltip + '"',
-            "important"
+            'important'
           );
         }
       });
     });
 
     // Prevent link clicks from toggling project
-    document.querySelectorAll(".project-item a").forEach((link) => {
-      link.addEventListener("click", function (e) {
+    document.querySelectorAll('.project-item a').forEach((link) => {
+      link.addEventListener('click', function (e) {
         e.stopPropagation();
       });
     });
@@ -621,30 +621,30 @@ document.addEventListener("DOMContentLoaded", function () {
    * Initialize skills toggle button functionality
    */
   function initializeSkillsToggle() {
-    document.querySelectorAll(".skills-toggle").forEach((button) => {
-      button.addEventListener("click", function (e) {
+    document.querySelectorAll('.skills-toggle').forEach((button) => {
+      button.addEventListener('click', function (e) {
         // Stop event propagation to prevent project toggling
         e.stopPropagation();
         e.preventDefault();
 
         const hiddenSkills =
-          this.closest(".pl-2, .pl-4").querySelector(".hidden-skills");
-        const projectIndex = this.closest(".project-item").dataset.index;
+          this.closest('.pl-2, .pl-4').querySelector('.hidden-skills');
+        const projectIndex = this.closest('.project-item').dataset.index;
         const project = projects[projectIndex];
         const hiddenSkillsCount =
           project.technologies.length - CONFIG.skills.visibleCount;
 
         // Toggle with smooth transitions
-        if (hiddenSkills.classList.contains("hidden")) {
+        if (hiddenSkills.classList.contains('hidden')) {
           // Expand with animation
           requestAnimationFrame(() => {
-            hiddenSkills.classList.remove("hidden");
-            this.textContent = "Show less";
+            hiddenSkills.classList.remove('hidden');
+            this.textContent = 'Show less';
           });
         } else {
           // Collapse with animation
           requestAnimationFrame(() => {
-            hiddenSkills.classList.add("hidden");
+            hiddenSkills.classList.add('hidden');
             this.textContent = `+${hiddenSkillsCount} more`;
           });
         }
@@ -656,35 +656,35 @@ document.addEventListener("DOMContentLoaded", function () {
    * Initialize project detail toggle functionality
    */
   function initializeProjectDetailToggle() {
-    const projectTitles = document.querySelectorAll(".project-title");
+    const projectTitles = document.querySelectorAll('.project-title');
     const projectDescriptions = document.querySelectorAll(
-      ".project-description"
+      '.project-description'
     );
 
     // Toggle project details when clicking on title or description
     [...projectTitles, ...projectDescriptions].forEach((element) => {
-      element.addEventListener("click", function (e) {
+      element.addEventListener('click', function (e) {
         e.stopPropagation();
 
-        const projectItem = this.closest(".project-item");
-        const details = projectItem.querySelector(".project-details");
-        const hiddenSkills = projectItem.querySelector(".hidden-skills");
-        const skillsToggle = projectItem.querySelector(".skills-toggle");
+        const projectItem = this.closest('.project-item');
+        const details = projectItem.querySelector('.project-details');
+        const hiddenSkills = projectItem.querySelector('.hidden-skills');
+        const skillsToggle = projectItem.querySelector('.skills-toggle');
         const projectIndex = projectItem.dataset.index;
         const project = projects[projectIndex];
         const hiddenSkillsCount =
           project.technologies.length - CONFIG.skills.visibleCount;
 
         // Toggle project details
-        const isActive = details.classList.contains("active");
+        const isActive = details.classList.contains('active');
 
         // If already active, close this project
         if (isActive) {
-          details.classList.remove("active");
-          projectItem.classList.remove("active");
+          details.classList.remove('active');
+          projectItem.classList.remove('active');
 
-          if (hiddenSkills && !hiddenSkills.classList.contains("hidden")) {
-            hiddenSkills.classList.add("hidden");
+          if (hiddenSkills && !hiddenSkills.classList.contains('hidden')) {
+            hiddenSkills.classList.add('hidden');
             if (skillsToggle && hiddenSkillsCount > 0) {
               skillsToggle.textContent = `+${hiddenSkillsCount} more`;
             }
@@ -693,19 +693,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Close all other projects first
-        document.querySelectorAll(".project-details.active").forEach((d) => {
-          d.classList.remove("active");
+        document.querySelectorAll('.project-details.active').forEach((d) => {
+          d.classList.remove('active');
         });
 
-        document.querySelectorAll(".project-item.active").forEach((item) => {
-          item.classList.remove("active");
+        document.querySelectorAll('.project-item.active').forEach((item) => {
+          item.classList.remove('active');
 
           // Hide all other hidden skills
-          const skills = item.querySelector(".hidden-skills");
-          const toggle = item.querySelector(".skills-toggle");
+          const skills = item.querySelector('.hidden-skills');
+          const toggle = item.querySelector('.skills-toggle');
 
-          if (skills && !skills.classList.contains("hidden")) {
-            skills.classList.add("hidden");
+          if (skills && !skills.classList.contains('hidden')) {
+            skills.classList.add('hidden');
 
             if (toggle) {
               const idx = item.dataset.index;
@@ -720,14 +720,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Open this project
-        details.classList.add("active");
-        projectItem.classList.add("active");
+        details.classList.add('active');
+        projectItem.classList.add('active');
 
         // Show hidden skills too
         if (hiddenSkills && hiddenSkillsCount > 0) {
-          hiddenSkills.classList.remove("hidden");
+          hiddenSkills.classList.remove('hidden');
           if (skillsToggle) {
-            skillsToggle.textContent = "Show less";
+            skillsToggle.textContent = 'Show less';
           }
         }
       });
@@ -740,61 +740,61 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function initializeDirectTooltips() {
     // Force create all project icon tooltips on page load
-    document.querySelectorAll(".project-icon").forEach((icon) => {
+    document.querySelectorAll('.project-icon').forEach((icon) => {
       // Mark as initialized to avoid re-processing
-      if (!icon.hasAttribute("data-tooltip-initialized")) {
-        icon.setAttribute("data-tooltip-initialized", "true");
+      if (!icon.hasAttribute('data-tooltip-initialized')) {
+        icon.setAttribute('data-tooltip-initialized', 'true');
 
         // Ensure position is set properly
-        icon.style.position = "relative";
-        icon.style.zIndex = "1";
+        icon.style.position = 'relative';
+        icon.style.zIndex = '1';
 
         // Get tooltip content
         let tooltipText;
-        if (icon.classList.contains("project-github-icon")) {
-          tooltipText = "View Source Code";
-        } else if (icon.classList.contains("project-demo-icon")) {
-          tooltipText = "View Live Demo";
-        } else if (icon.classList.contains("project-freelance-icon")) {
-          tooltipText = "Freelance Project";
+        if (icon.classList.contains('project-github-icon')) {
+          tooltipText = 'View Source Code';
+        } else if (icon.classList.contains('project-demo-icon')) {
+          tooltipText = 'View Live Demo';
+        } else if (icon.classList.contains('project-freelance-icon')) {
+          tooltipText = 'Freelance Project';
         } else {
           tooltipText =
-            icon.getAttribute("aria-label") ||
-            icon.getAttribute("data-tooltip") ||
-            "Info";
+            icon.getAttribute('aria-label') ||
+            icon.getAttribute('data-tooltip') ||
+            'Info';
         }
 
         // Get or create icon tooltip
-        let iconTooltip = icon.querySelector(".icon-tooltip");
+        let iconTooltip = icon.querySelector('.icon-tooltip');
         if (!iconTooltip) {
-          iconTooltip = document.createElement("div");
-          iconTooltip.className = "icon-tooltip";
+          iconTooltip = document.createElement('div');
+          iconTooltip.className = 'icon-tooltip';
           iconTooltip.textContent = tooltipText;
           icon.appendChild(iconTooltip);
         }
 
         // Set correct styles based on theme
-        if (document.body.classList.contains("dark")) {
-          iconTooltip.style.backgroundColor = "rgba(60, 60, 60, 0.95)";
-          iconTooltip.style.border = "1px solid rgba(255, 255, 255, 0.25)";
+        if (document.body.classList.contains('dark')) {
+          iconTooltip.style.backgroundColor = 'rgba(60, 60, 60, 0.95)';
+          iconTooltip.style.border = '1px solid rgba(255, 255, 255, 0.25)';
         } else {
-          iconTooltip.style.backgroundColor = "rgba(50, 50, 50, 0.95)";
-          iconTooltip.style.border = "1px solid rgba(255, 255, 255, 0.15)";
+          iconTooltip.style.backgroundColor = 'rgba(50, 50, 50, 0.95)';
+          iconTooltip.style.border = '1px solid rgba(255, 255, 255, 0.15)';
         }
 
         // Add direct event handlers
-        icon.addEventListener("mouseenter", function () {
-          iconTooltip.style.opacity = "1";
-          iconTooltip.style.visibility = "visible";
-          iconTooltip.style.transform = "translateX(-50%) translateY(0)";
-          icon.style.zIndex = "1001";
+        icon.addEventListener('mouseenter', function () {
+          iconTooltip.style.opacity = '1';
+          iconTooltip.style.visibility = 'visible';
+          iconTooltip.style.transform = 'translateX(-50%) translateY(0)';
+          icon.style.zIndex = '1001';
         });
 
-        icon.addEventListener("mouseleave", function () {
-          iconTooltip.style.opacity = "0";
-          iconTooltip.style.visibility = "hidden";
-          iconTooltip.style.transform = "translateX(-50%) translateY(10px)";
-          icon.style.zIndex = "1";
+        icon.addEventListener('mouseleave', function () {
+          iconTooltip.style.opacity = '0';
+          iconTooltip.style.visibility = 'hidden';
+          iconTooltip.style.transform = 'translateX(-50%) translateY(10px)';
+          icon.style.zIndex = '1';
         });
       }
     });
@@ -802,10 +802,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run again after a delay to catch elements added after initial load
     setTimeout(() => {
       document
-        .querySelectorAll(".project-icon:not([data-tooltip-initialized])")
+        .querySelectorAll('.project-icon:not([data-tooltip-initialized])')
         .forEach((icon) => {
           icon.click(); // Force a layout recalculation with a harmless click
-          icon.setAttribute("data-tooltip-initialized", "true");
+          icon.setAttribute('data-tooltip-initialized', 'true');
         });
     }, 1000);
   }
@@ -814,62 +814,62 @@ document.addEventListener("DOMContentLoaded", function () {
    * Set up scroll reveal animations for project items
    */
   function setupScrollReveal() {
-    const projectItems = document.querySelectorAll(".project-item");
+    const projectItems = document.querySelectorAll('.project-item');
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fadeIn");
+            entry.target.classList.add('animate-fadeIn');
             observer.unobserve(entry.target);
           }
         });
       },
       {
         threshold: CONFIG.animation.threshold,
-        rootMargin: "0px 0px -50px 0px",
+        rootMargin: '0px 0px -50px 0px',
       }
     );
 
     projectItems.forEach((item) => {
       // Make sure project items are visible even without animation
-      item.style.opacity = "1";
+      item.style.opacity = '1';
       observer.observe(item);
     });
   }
 
   // Initialize tooltips
-  const tooltipElements = document.querySelectorAll("[data-tooltip]");
+  const tooltipElements = document.querySelectorAll('[data-tooltip]');
 
   tooltipElements.forEach((element) => {
     // Refresh tooltip visibility
-    element.addEventListener("mouseenter", function () {
-      this.style.position = "relative";
+    element.addEventListener('mouseenter', function () {
+      this.style.position = 'relative';
     });
   });
 
   // Fix freelance icon in light mode
-  if (document.body.classList.contains("light")) {
+  if (document.body.classList.contains('light')) {
     const freelanceIcons = document.querySelectorAll('img[src*="freelance"]');
     freelanceIcons.forEach((icon) => {
-      icon.style.filter = "brightness(0.2)";
+      icon.style.filter = 'brightness(0.2)';
     });
   }
 
   // Apply theme change listener for icons
   document
-    .getElementById("theme-toggle")
-    .addEventListener("click", function () {
+    .getElementById('theme-toggle')
+    .addEventListener('click', function () {
       setTimeout(() => {
         const freelanceIcons = document.querySelectorAll(
           'img[src*="freelance"]'
         );
-        if (document.body.classList.contains("light")) {
+        if (document.body.classList.contains('light')) {
           freelanceIcons.forEach((icon) => {
-            icon.style.filter = "brightness(0.2)";
+            icon.style.filter = 'brightness(0.2)';
           });
         } else {
           freelanceIcons.forEach((icon) => {
-            icon.style.filter = "none";
+            icon.style.filter = 'none';
           });
         }
       }, 50);
@@ -880,79 +880,79 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function initializeTooltips() {
     // Find all elements with data-tooltip attribute
-    const tooltipElements = document.querySelectorAll("[data-tooltip]");
+    const tooltipElements = document.querySelectorAll('[data-tooltip]');
 
     tooltipElements.forEach((element) => {
       // Make sure position is relative for tooltip positioning
-      element.style.position = "relative";
+      element.style.position = 'relative';
 
       // Add tooltip-container class if it doesn't have it
-      if (!element.classList.contains("tooltip-container")) {
-        element.classList.add("tooltip-container");
+      if (!element.classList.contains('tooltip-container')) {
+        element.classList.add('tooltip-container');
       }
 
       // Create a stronger interaction
-      element.addEventListener("mouseenter", function () {
+      element.addEventListener('mouseenter', function () {
         // Force a style recalculation to ensure tooltip appears
-        this.style.position = "relative";
+        this.style.position = 'relative';
         if (
-          this.getAttribute("data-tooltip") &&
-          !this.querySelector(".force-tooltip")
+          this.getAttribute('data-tooltip') &&
+          !this.querySelector('.force-tooltip')
         ) {
-          const tooltipText = this.getAttribute("data-tooltip");
+          const tooltipText = this.getAttribute('data-tooltip');
 
           // Add inline style for critical properties
-          this.style.setProperty("--tooltip-text", '"' + tooltipText + '"');
-          this.style.setProperty("z-index", "1000", "important");
+          this.style.setProperty('--tooltip-text', '"' + tooltipText + '"');
+          this.style.setProperty('z-index', '1000', 'important');
         }
       });
     });
 
     // Special handling for project icons with enhanced performance
-    const projectIcons = document.querySelectorAll(".project-icon");
-    console.log("Found project icons:", projectIcons.length);
+    const projectIcons = document.querySelectorAll('.project-icon');
+    console.log('Found project icons:', projectIcons.length);
 
     projectIcons.forEach((icon) => {
-      if (icon.getAttribute("data-tooltip")) {
+      if (icon.getAttribute('data-tooltip')) {
         // Ensure tooltip-container class is present
-        if (!icon.classList.contains("tooltip-container")) {
-          icon.classList.add("tooltip-container");
+        if (!icon.classList.contains('tooltip-container')) {
+          icon.classList.add('tooltip-container');
         }
 
         // Set essential inline styles for tooltip positioning
-        icon.style.position = "relative";
+        icon.style.position = 'relative';
 
         // Create inline tooltip element for maximum compatibility
-        const tooltipText = icon.getAttribute("data-tooltip");
-        icon.setAttribute("title", tooltipText); // Fallback for browsers
+        const tooltipText = icon.getAttribute('data-tooltip');
+        icon.setAttribute('title', tooltipText); // Fallback for browsers
 
         // Use data attributes to store tooltip position values
-        icon.setAttribute("data-tooltip-active", "false");
+        icon.setAttribute('data-tooltip-active', 'false');
 
         // Add stronger hover effect with performance optimization
-        icon.addEventListener("mouseenter", function () {
+        icon.addEventListener('mouseenter', function () {
           // Only force recalculation if needed (throttling)
-          if (this.getAttribute("data-tooltip-active") !== "true") {
-            this.style.position = "relative";
-            this.style.zIndex = "1001";
-            this.setAttribute("data-tooltip-active", "true");
+          if (this.getAttribute('data-tooltip-active') !== 'true') {
+            this.style.position = 'relative';
+            this.style.zIndex = '1001';
+            this.setAttribute('data-tooltip-active', 'true');
 
             // Force tooltip text to be defined
             this.style.setProperty(
-              "--tooltip-text",
+              '--tooltip-text',
               '"' + tooltipText + '"',
-              "important"
+              'important'
             );
           }
         });
 
-        icon.addEventListener("mouseleave", function () {
-          this.setAttribute("data-tooltip-active", "false");
-          this.style.zIndex = "";
+        icon.addEventListener('mouseleave', function () {
+          this.setAttribute('data-tooltip-active', 'false');
+          this.style.zIndex = '';
         });
       }
     });
 
-    console.log("Initialized tooltips for", tooltipElements.length, "elements");
+    console.log('Initialized tooltips for', tooltipElements.length, 'elements');
   }
 });
