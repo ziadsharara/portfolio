@@ -20,6 +20,8 @@ const projects = [
       'MongoDB',
       'RESTful API',
       'JWT',
+      'Nodemailer',
+      'bcryptjs',
       'Paymob',
       'Railway',
     ],
