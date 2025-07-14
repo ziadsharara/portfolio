@@ -44,6 +44,34 @@ const projects = [
       'Robust and modular backend tailored for dental clinic management. Features include role-based access control (admin, doctor, assistant, patient), patient record management, appointment scheduling, and secure authentication. Built with scalable architecture to support future integration with frontend systems and real-time features. Emphasizes clean code, separation of concerns, and secure route protection using JWT.',
     github: 'https://github.com/ziadsharara/ibtesama-backend',
   },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+    viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+    class="h-3 w-3 text-white">
+    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+    <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
+  </svg>
+  `,
+    title: 'NGL-Clone',
+    description:
+      'Built the backend for a full-stack anonymous messaging platform inspired by NGL, focusing on secure, scalable, and user-friendly communication with modern authentication and encryption.',
+    technologies: [
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'Mongoose',
+      'RESTful API',
+      'JWT',
+      'Passport.js',
+      'OAuth (Google, Twitter)',
+      'Nodemailer',
+      'bcryptjs',
+    ],
+    details:
+      'A robust backend powering an anonymous messaging app. Features include user authentication (Google & Twitter OAuth), encrypted message storage, session management, and email notifications. Implements role-based access, input validation, and comprehensive error handling. Designed with modular architecture for scalability and easy integration with React/TypeScript frontend. Prioritizes security with JWT, bcrypt, and environment-based configuration.',
+    github: 'https://github.com/ziadsharara/NGL-Clone',
+  },
 ];
 
 document.addEventListener('DOMContentLoaded', function () {
