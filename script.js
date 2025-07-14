@@ -29,13 +29,12 @@ const projects = [
   },
   {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-  viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-  class="h-3 w-3 text-white">
-  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-  <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
-</svg>
-`,
+    viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+    class="h-3 w-3 text-white">
+    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+    <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
+  </svg>`,
     title: 'Ibtesama',
     description:
       'Developed the backend for a full-stack, digital platform built to streamline dental clinic operations, with a focus on modular, scalable backend services supporting appointments, patients, user roles, and clinical workflows.',
