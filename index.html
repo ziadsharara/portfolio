@@ -93,19 +93,19 @@
     <!-- Prevent FOUC with instant execution script -->
     <script>
       // Add loading class immediately to prevent FOUC
-      document.documentElement.classList.add("loading");
+      document.documentElement.classList.add('loading');
 
       // Set theme early based on localStorage
-      const savedTheme = localStorage.getItem("theme");
+      const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
         document.documentElement.classList.add(savedTheme);
       } else if (
         window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: light)").matches
+        window.matchMedia('(prefers-color-scheme: light)').matches
       ) {
-        document.documentElement.classList.add("light");
+        document.documentElement.classList.add('light');
       } else {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.add('dark');
       }
     </script>
 
@@ -133,11 +133,11 @@
     <script defer src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
-        darkMode: "class",
+        darkMode: 'class',
         theme: {
           extend: {
             screens: {
-              xs: "480px",
+              xs: '480px',
             },
           },
         },
@@ -487,12 +487,13 @@
               <p
                 class="text-sm md:text-base max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl"
               >
-                Business student with a strong passion for technology and
-                hands-on experience in backend development. Comfortable working
-                across multiple technologies and quickly adapting to new ones.
-                Proven leadership as a team leader in collaborative projects,
-                with a focus on continuous learning and delivering quality
-                solutions.
+                SAP Fiori Developer with expertise in UI5 and OData services,
+                and hands-on experience in backend development using Node.js and
+                .NET. Comfortable working with diverse technologies and quickly
+                adapting to new environments. Proven ability to deliver
+                scalable, user-focused solutions while maintaining clean
+                architecture and best practices, with a strong commitment to
+                continuous learning.
               </p>
             </div>
             <div class="clear-both"></div>
@@ -568,18 +569,18 @@
     <script>
       // Function to handle page loading
       function handlePageLoad() {
-        const loader = document.getElementById("page-loader");
-        const contentWrapper = document.getElementById("content-wrapper");
+        const loader = document.getElementById('page-loader');
+        const contentWrapper = document.getElementById('content-wrapper');
 
         // Remove loading class from html
-        document.documentElement.classList.remove("loading");
+        document.documentElement.classList.remove('loading');
 
         // Hide loader and show content
         if (loader && contentWrapper) {
           // Add a slight delay to ensure all styles are applied
           setTimeout(() => {
-            loader.classList.add("hidden");
-            contentWrapper.classList.add("visible");
+            loader.classList.add('hidden');
+            contentWrapper.classList.add('visible');
 
             // Remove loader from DOM after transition completes
             setTimeout(() => {
@@ -592,10 +593,10 @@
       }
 
       // Use multiple triggers to ensure the loader is removed
-      if (document.readyState === "complete") {
+      if (document.readyState === 'complete') {
         handlePageLoad();
       } else {
-        window.addEventListener("load", handlePageLoad);
+        window.addEventListener('load', handlePageLoad);
         // Fallback timeout to ensure page displays even if load event doesn't fire properly
         setTimeout(handlePageLoad, 2500);
       }
@@ -604,19 +605,19 @@
     <!-- Tooltip fix script for project icons -->
     <script>
       // This script runs after everything else has loaded
-      window.addEventListener("load", function () {
+      window.addEventListener('load', function () {
         // Give time for the main scripts to run
         setTimeout(function () {
-          console.log("Running tooltip fix script");
+          console.log('Running tooltip fix script');
 
           // Force tooltips on project icons
           document
             .querySelectorAll(
-              ".project-github-icon, .project-demo-icon, .project-freelance-icon"
+              '.project-github-icon, .project-demo-icon, .project-freelance-icon'
             )
             .forEach(function (icon) {
               // Get the tooltip
-              const tooltip = icon.querySelector(".icon-tooltip");
+              const tooltip = icon.querySelector('.icon-tooltip');
               if (tooltip) {
                 // Apply direct inline styles
                 tooltip.style.cssText = `
@@ -625,9 +626,9 @@
               left: 50% !important;
               transform: translateX(-50%) translateY(10px) !important;
               background-color: ${
-                document.body.classList.contains("dark")
-                  ? "rgba(60, 60, 60, 0.95)"
-                  : "rgba(50, 50, 50, 0.95)"
+                document.body.classList.contains('dark')
+                  ? 'rgba(60, 60, 60, 0.95)'
+                  : 'rgba(50, 50, 50, 0.95)'
               } !important;
               color: white !important;
               padding: 5px 9px !important;
@@ -640,29 +641,29 @@
               pointer-events: none !important;
               line-height: 1.4 !important;
               border: 1px solid ${
-                document.body.classList.contains("dark")
-                  ? "rgba(255, 255, 255, 0.25)"
-                  : "rgba(255, 255, 255, 0.15)"
+                document.body.classList.contains('dark')
+                  ? 'rgba(255, 255, 255, 0.25)'
+                  : 'rgba(255, 255, 255, 0.15)'
               } !important;
             `;
 
                 // Make sure positioning is set correctly
-                icon.style.position = "relative";
-                icon.style.zIndex = "10";
+                icon.style.position = 'relative';
+                icon.style.zIndex = '10';
 
                 // Add direct event listeners
                 icon.onmouseenter = function () {
-                  tooltip.style.opacity = "1";
-                  tooltip.style.visibility = "visible";
-                  tooltip.style.transform = "translateX(-50%) translateY(0)";
-                  this.style.zIndex = "9999";
+                  tooltip.style.opacity = '1';
+                  tooltip.style.visibility = 'visible';
+                  tooltip.style.transform = 'translateX(-50%) translateY(0)';
+                  this.style.zIndex = '9999';
                 };
 
                 icon.onmouseleave = function () {
-                  tooltip.style.opacity = "0";
-                  tooltip.style.visibility = "hidden";
-                  tooltip.style.transform = "translateX(-50%) translateY(10px)";
-                  this.style.zIndex = "10";
+                  tooltip.style.opacity = '0';
+                  tooltip.style.visibility = 'hidden';
+                  tooltip.style.transform = 'translateX(-50%) translateY(10px)';
+                  this.style.zIndex = '10';
                 };
               }
             });

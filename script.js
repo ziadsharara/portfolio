@@ -3,14 +3,37 @@
  */
 const projects = [
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-  viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-  class="h-3 w-3 text-white">
-  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-  <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
-</svg>
-`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+      viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="h-3 w-3 text-white">
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+      <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
+    </svg>`,
+    title: 'Enterprise Employee Management System',
+    description:
+      'A comprehensive employee directory built with SAP UI5/Fiori, implementing full CRUD, responsive design, and Fiori 3.0 compliance for enterprise HR operations.',
+    technologies: [
+      'SAP UI5',
+      'Fiori 3.0',
+      'MVC',
+      'JavaScript',
+      'OData',
+      'JSON Model',
+      'i18n',
+    ],
+    details:
+      'Enterprise-grade employee management system following SAP Fiori guidelines. Features include CRUD for employees, real-time search and filtering, responsive layouts, internationalization, and robust validation. Built with MVC architecture, UI5 routing, and optimized for performance with best coding practices.',
+    github: 'https://github.com/ziadsharara/cic-employee-management-system',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"   
+      viewBox="0 0 24 24" fill="none" stroke="currentColor"   
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"   
+      class="h-3 w-3 text-white">   
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>   
+      <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path> 
+    </svg> `,
     title: 'Happy Shop',
     description:
       'Modular e-commerce backend, developed 30+ RESTful APIs with full CRUD, auth (JWT + RBAC), and Paymob payments with image upload, cart, wishlist, coupons, reviews, and order management.',
@@ -30,13 +53,13 @@ const projects = [
     github: 'https://github.com/ziadsharara/e-commerce',
   },
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-    viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-    class="h-3 w-3 text-white">
-    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-    <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
-  </svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"     
+      viewBox="0 0 24 24" fill="none" stroke="currentColor"     
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"     
+      class="h-3 w-3 text-white">     
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>     
+      <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>   
+    </svg>`,
     title: 'Ibtesama',
     description:
       'Developed the backend for a full-stack, digital platform built to streamline dental clinic operations, with a focus on modular, scalable backend services supporting appointments, patients, user roles, and clinical workflows.',
@@ -46,14 +69,13 @@ const projects = [
     github: 'https://github.com/ziadsharara/ibtesama-backend',
   },
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-    viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-    class="h-3 w-3 text-white">
-    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-    <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
-  </svg>
-  `,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"      
+      viewBox="0 0 24 24" fill="none" stroke="currentColor"      
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"      
+      class="h-3 w-3 text-white">     
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>     
+      <path d="M8 21h8M2 17h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>   
+    </svg>`,
     title: 'NGL-Clone',
     description:
       'Built the backend for a full-stack anonymous messaging platform inspired by NGL, focusing on secure, scalable, and user-friendly communication with modern authentication and encryption.',
@@ -82,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
       speed: 50,
       eraseSpeed: 30,
       pauseDuration: 2000,
-      text: "Hi, I'm Ziad Sharara a software engineer who focuses on backend development.",
+      text: "Hi, I'm Ziad Sharara, SAP Fiori & Backend Developer.",
     },
     skills: {
       visibleCount: 10,
