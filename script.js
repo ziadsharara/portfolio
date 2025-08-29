@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
       speed: 50,
       eraseSpeed: 30,
       pauseDuration: 2000,
-      text: "Hi, I'm Ziad Sharara, SAP Fiori & Backend Developer.",
+      text: "Hi, I'm Ziad Sharara, Java Backend Developer.",
     },
     skills: {
       visibleCount: 10,
