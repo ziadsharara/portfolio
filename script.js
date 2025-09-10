@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
       speed: 50,
       eraseSpeed: 30,
       pauseDuration: 2000,
-      text: "Hi, I'm Ziad Sharara, Java Backend Developer.",
+      text: "Hi, I'm Ziad Sharara, a Backend Software Engineer specializing in Node.js/NestJS",
     },
     skills: {
       visibleCount: 10,
